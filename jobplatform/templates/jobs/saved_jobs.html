@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Saved Jobs{% endblock %}
+
+{% block content %}
+<h2>Your Saved Jobs</h2>
+<ul class="list-group">
+    {% for saved in saved_jobs %}
+        <li class="list-group-item">
+            <a href="{% url 'job_detail' saved.job.id %}">{{ saved.job.title }}</a> - Saved on {{ saved.date_saved }}
+        </li>
+    {% empty %}
+        <li class="list-group-item">You have not saved any jobs yet.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
